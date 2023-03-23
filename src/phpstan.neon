@@ -1,0 +1,21 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+parameters:
+    reportUnmatchedIgnoredErrors: false
+    paths:
+        - app
+    level: 8
+    checkMissingIterableValueType: false
+    excludePaths:
+        - app/Mixins/*
+    ignoreErrors:
+        - '#Result of method App\\Http\\Controllers\\Auth\\LoginController::sendLockoutResponse\(\) \(void\) is used.#'
+        - '#Call to an undefined method Illuminate\\Contracts\\Filesystem\\Filesystem::addPlugin\(\)#'
+        - '#Call to an undefined method Illuminate\\Contracts\\Filesystem\\Cloud::addPlugin\(\)#'
+        - '#Call to an undefined method Illuminate\\Filesystem\\FilesystemAdapter::getAdapter\(\)#'
+        - '#Call to an undefined method Illuminate\\Filesystem\\FilesystemAdapter::isS3Adapter\(\)#'
+        - '#Call to an undefined method Illuminate\\Filesystem\\FilesystemAdapter::initializeS3Stream\(\)#'
+        - '#Call to an undefined method Illuminate\\Filesystem\\FilesystemAdapter::getStreamPath\(\)#'
+        - '#Call to an undefined method League\\Flysystem\\AdapterInterface::getArchive\(\)#'
+        - '#Parameter \#1 \$separator of function explode expects non-empty-string, string given.#'
+        - '#Access to an undefined property App\\Models\\Neo|Illuminate\\Database\\Eloquent\\Collection<App\\Models\\Neo>::\$id.#'

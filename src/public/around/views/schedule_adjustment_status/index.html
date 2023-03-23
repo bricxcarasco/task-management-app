@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BPHERO</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+      
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="../../vendor/simplebar/dist/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="../../vendor/flatpickr/dist/flatpickr.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../../css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="../../css/custom.css">
+  </head>
+  <!-- Body-->
+  <body class="is-sidebar">
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="page-wrapper d-flex flex-column">
+      <div class="modal fade" id="service_switch" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title ">サービス主体選択</h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="switch">
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch1" />
+                    <label class="form-check-label" for="switch1">田中太郎（RIO）</label>
+                </div>
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch2" checked/>
+                    <label class="form-check-label" for="switch2">株式会社YNS</label>
+                </div>
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch3" />
+                    <label class="form-check-label" for="switch3">HERO開発チーム</label>
+                </div>
+              </div>
+              <div class="py-5 text-center">
+                <a href="#" class="nav-link">
+                  + 新しくNEOを作る
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="dialogue" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p class="text-center mb-0">申請リクエスト</p>              
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-sm" type="button" data-bs-dismiss="modal">Reject</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modalDefault" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">回答者一覧</h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="bg-gray text-center p-2">
+                <p class="mb-0">【開始】2021-11-09  12:00<br>【終了】2021-11-09  13:00</p>
+              </div>
+              <ul class="p-0 mt-4" style="list-style: none;">
+                <li class="d-flex align-items-center justify-content-between">
+                  <img class="d-block rounded-circle me-4" src="../../img/main.jpg" alt="marquez Christian" width="30">
+                  <span class="flex-1">株式会社YN</span>
+                  <span class="w-25 text-center">×</span>
+                </li>
+                <li class="d-flex align-items-center justify-content-between">
+                  <img class="d-block rounded-circle me-4" src="../../img/main.jpg" alt="marquez Christian" width="30">
+                  <span class="flex-1">佐藤一朗</span>
+                  <span class="w-25 text-center">○</span>
+                </li>
+                <li class="d-flex align-items-center justify-content-between">
+                  <img class="d-block rounded-circle me-4" src="../../img/main.jpg" alt="marquez Christian" width="30">
+                  <span class="flex-1">佐藤一朗</span>
+                  <span class="w-25 text-center">×</span>
+                </li>
+              </ul>
+              <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary">この日程で確定する</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar (Floating dark)-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="header navbar navbar-expand-lg navbar-light navbar-floating navbar-sticky" data-scroll-header data-fixed-element>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button>
+          <a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index.html">
+            <img src="../../img/logo.png" alt="HEROロゴ" width="88">   
+          </a>
+          <div class="collapse navbar-collapse order-lg-2" id="navbarCollapse1">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-home"></i></a></li>
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-message-square"></i></a></li>
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-calendar"></i></a></li>
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-list"></i></a></li>
+            </ul>
+          </div>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
+              <a class="nav-link-style " href="#" >
+                <i class="ai-bell fs-xl me-3 align-middle"></i>
+              </a>
+              <a class="nav-link-style d-none d-md-inline-block" href="#">
+                ヘルプ
+              </a>
+              <button class="btn p-0 nav-link-style d-inline-block d-md-none" type="button" data-bs-toggle="modal" data-bs-target="#service_switch">
+                <i class="ai-users fs-xl align-middle"></i>
+              </button>
+            </div>
+        </div>
+      </header>
+      <div class="offcanvas  order-lg-2" id="primaryMenu">
+        <div class="offcanvas-header pb-0 justify-content-end">
+          <!-- <a class="nav-link p-0" href="#" ><i class="ai-home align-baseline"></i><span class="ms-2">ホーム画面</span></a> -->
+          <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="px-4 py-4 mb-1 text-center"><img class="d-block rounded-circle mx-auto my-2" src="../../img/main.jpg" at="Amanda Wilson" width="110">
+          <h6 class="mb-0 pt-1">田中　太郎</h6>
+        </div>
+        <div class="d-lg-block collapsed pb-2" id="account-menu">
+          <h3 class="d-block d-flex align-items-center bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">
+            アカウント
+            <span class="text-muted fs-sm fw-normal ms-auto badge bg-dark ">無料会員</span>
+          </h3>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">
+            ホーム画面
+          </a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">
+            アカウント情報
+          </a>
+          <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">その他</h3>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">基本設定</a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">ヘルプ</a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">ログアウト</a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">退会</a>
+          <!-- <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="signin-illustration.html"><i class="ai-log-out fs-lg opacity-60 me-2"></i>ログアウト</a> -->
+        </div>
+      </div>
+      <!-- Page content-->
+      <div class="position-relative container sidebar">
+        <div class="w-25 d-none d-md-block sidebar__wrapper">
+            <div class="bg-light rounded-3 shadow-lg">
+                <div class="px-4 py-4 mb-1 text-center"><img class="d-block rounded-circle mx-auto my-2" src="../../img/main.jpg" alt="marquez Christian" width="110">
+                    <h6 class="mb-0 pt-1">marquez Christian</h6>
+                </div>
+                <div class="d-lg-block collapsed pb-2">
+                    <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="/">
+                        ホーム画面
+                    </a>
+                    <h3 class="d-block d-flex align-items-center bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">
+                        アカウント
+                        <span class="text-muted fs-sm fw-normal ms-auto badge bg-dark ">無料会員</span>
+                    </h3>
+                    <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="rio/profile/edit">プロフィールの確認・変更</a>
+                    <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="rio/information/edit">アカウント情報の確認・変更</a>
+                    <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">その他</h3>
+                    <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="basic-settings">基本設定</a>
+                    <!-- <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">ヘルプ</a> -->
+                    <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="rio/introduce_hero">HEROを紹介する</a>
+                    <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="logout">ログアウト</a>
+                    <!-- <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">退会</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="container position-relative zindex-5 pt-6 py-md-6 mb-md-3 home--height">
+        <div class="row">
+          <!-- Content-->
+          <div class="col-12 col-md-9 offset-md-3">
+            <div class="d-flex flex-column pb-4 pb-md-0 rounded-3 ">
+                <div class="position-relative">
+                    <h3 class="py-3 mb-0 text-center">株式会社YNSの 日程調整</h3>
+                </div>
+                <div class="position-relative border-bottom">
+                  <button class="btn btn-link px-0">
+                    <i class="ai-arrow-left"></i>一覧に戻る
+                  </button>
+                </div>
+            </div>
+            <div class="mt-4">
+              <div class="mb-3">
+                <label for="text-input" class="form-label">このイベントの日程調整URL</label>
+                <div class="position-relative">
+                  <input class="form-control" type="text" id="text-input" value="https://#########" disabled>
+                  <button type="button" class="btn btn-link btn--right p-0"><i class="ai-copy"></i></button>
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="form-label">■タイトル</span>
+                <p>○○○○の懇親会</p>
+              </div>
+              <div class="mb-3">
+                <span class="form-label">■詳細</span>
+                <p>テキストテキストテキストテキスト
+                  テキストテキストテキストテキスト
+                  </p>
+              </div>
+              <div class="mb-3">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span class="form-label">■候補日時</span>
+                  <span>あなたの回答</span>
+                </div>
+                <ul style="list-style: none;" class="p-0">
+                  <li class="d-flex align-items-center justify-content-between mt-2">
+                    <div class="bg-gray p-1 flex-1 me-4">
+                      <div class="border-bottom text-center">
+                        <button class="btn btn-link p-0 c-primary" data-bs-toggle="modal" data-bs-target="#modalDefault">
+                          【開始】 2021-11-09  12:00 <br>
+                          【終了】 2021-11-09  13:00</button>
+                      </div>
+                      <div class="d-flex px-2">
+                        <div>
+                          <i class="ai-user"></i>
+                          <span>0</span>
+                        </div>
+                        <div class="text-center flex-1">
+                          <span class="me-2">= 0</span>
+                          <span class="me-2">△ 0</span>
+                          <span>× 0</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-around">
+                      <button class="btn btn-link p-0 me-3 fs-4 c-primary">=</button>
+                      <button class="btn btn-link p-0 me-3 fs-4 c-primary">△</button>
+                      <button class="btn btn-link p-0 fs-4 c-primary">×</button>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-center justify-content-between mt-2">
+                    <div class="bg-gray p-1 flex-1 me-4">
+                      <div class="border-bottom text-center">
+                        <button class="btn btn-link p-0 c-primary" data-bs-toggle="modal" data-bs-target="#modalDefault">
+                          【開始】 2021-11-09  12:00 <br>
+                          【終了】 2021-11-09  13:00</button>
+                      </div>
+                      <div class="d-flex px-2">
+                        <div>
+                          <i class="ai-user"></i>
+                          <span>0</span>
+                        </div>
+                        <div class="text-center flex-1">
+                          <span class="me-2">= 0</span>
+                          <span class="me-2">△ 0</span>
+                          <span>× 0</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-around">
+                      <button class="btn btn-link p-0 me-3 fs-4 c-primary">=</button>
+                      <button class="btn btn-link p-0 me-3 fs-4 c-primary">△</button>
+                      <button class="btn btn-link p-0 fs-4 c-primary">×</button>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-center justify-content-between mt-2">
+                    <div class="bg-gray p-1 flex-1 me-4">
+                      <div class="border-bottom text-center">
+                        <button class="btn btn-link p-0 c-primary" data-bs-toggle="modal" data-bs-target="#modalDefault">
+                          【開始】 2021-11-09  12:00 <br>
+                          【終了】 2021-11-09  13:00</button>
+                      </div>
+                      <div class="d-flex px-2">
+                        <div>
+                          <i class="ai-user"></i>
+                          <span>0</span>
+                        </div>
+                        <div class="text-center flex-1">
+                          <span class="me-2">= 0</span>
+                          <span class="me-2">△ 0</span>
+                          <span>× 0</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-around">
+                      <button class="btn btn-link p-0 me-3 fs-4 c-primary">=</button>
+                      <button class="btn btn-link p-0 me-3 fs-4 c-primary">△</button>
+                      <button class="btn btn-link p-0 fs-4 c-primary">×</button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </main>
+    <footer class="footer py-4 pb-5 pb-md-4">
+        <div class="container  d-md-flex align-items-center justify-content-between py-2">
+          <ul class="list-inline fs-sm mb-3 mb-md-0 order-md-2">
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">運営会社</a></li>
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">利用規約</a></li>
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">プライバシーポリシー</a></li>
+          </ul>
+          <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">Copyright © HERO, Inc. All Rights Reserved.</span></p>
+        </div>
+      </footer>
+      <div class="btn-toolbar sidebar-toggle btn-toolbar--custom menu__bar" role="toolbar" aria-label="Settings toolbar">
+        <div class="btn-group me-2 mb-2" role="group" aria-label="Settings group">
+          <button type="button" class="btn btn-secondary btn-icon">
+            <i class="ai-message-square"></i>
+          </button>
+          <button type="button" class="btn btn-secondary btn-icon">
+            <i class="ai-calendar"></i>
+          </button>
+          <button type="button" class="btn btn-secondary btn-icon">
+            <i class="ai-list"></i>
+          </button>
+        </div>
+      </div>
+      <!-- <button class="btn btn-primary btn-sm sidebar-toggle" type="button"><i class="ai-sidebar fs-base me-2"></i>Sidebar</button> -->
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="../../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="../../vendor/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
+    <!-- Main theme script-->
+    <script src="../../js/theme.min.js"></script>
+    <script>
+      let favoriteBtn = document.querySelectorAll('.button__favorite');
+      for (let index = 0; index < favoriteBtn.length; index++) {
+        const element = favoriteBtn[index];
+        // console.log(element);
+        element.addEventListener('click', function () {
+          this.classList.toggle('favorite');
+          let favoriteIcon = element.children[0].classList;
+          if (this.classList.contains('favorite')) {
+            favoriteIcon.remove('ai-star');
+            favoriteIcon.add('ai-star-filled');
+          } else {
+            favoriteIcon.add('ai-star');
+            favoriteIcon.remove('ai-star-filled');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

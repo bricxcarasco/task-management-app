@@ -1,0 +1,65 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production",
+    "prepare": "cd .. && husky install src/.husky",
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.{css,js,vue}": [
+      "eslint resources/js --fix",
+      "prettier --write"
+    ],
+    "*.php": "./vendor/bin/php-cs-fixer fix --config .php-cs-fixer.php"
+  },
+  "devDependencies": {
+    "@intlify/vue-i18n-loader": "^3.3.0",
+    "@vue/compiler-sfc": "^3.2.11",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^7.18.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "postcss": "^8.1.14",
+    "prettier": "^2.4.1",
+    "resolve-url-loader": "^3.1.2",
+    "sass": "^1.32.11",
+    "sass-loader": "^11.0.1",
+    "vue-loader": "^16.5.0"
+  },
+  "dependencies": {
+    "@tinymce/tinymce-vue": "^4.0.7",
+    "axios": "^0.21",
+    "bootstrap": "^4.6.0",
+    "canvas2image": "^1.0.5",
+    "date-fns": "^2.25.0",
+    "filepond": "^4.30.3",
+    "filepond-plugin-file-validate-size": "^2.2.5",
+    "filepond-plugin-file-validate-type": "^1.2.7",
+    "filepond-plugin-image-preview": "^4.6.11",
+    "filepond-polyfill": "^1.0.4",
+    "html2canvas": "^1.4.1",
+    "jquery": "^3.6",
+    "laravel-echo": "^1.11.3",
+    "laravel-mix": "^6.0.31",
+    "lodash": "^4.17.19",
+    "moment": "^2.29.1",
+    "popper.js": "^1.16.1",
+    "socket.io-client": "2.4.0",
+    "tiny-slider": "^2.9.4",
+    "tinymce": "^6.1.0",
+    "v3-infinite-loading": "^1.0.6",
+    "vue": "^3.2.11",
+    "vue-filepond": "^7.0.2",
+    "vue-i18n": "^9.2.0-beta.17"
+  }
+}

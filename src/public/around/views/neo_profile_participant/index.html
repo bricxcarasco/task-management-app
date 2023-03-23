@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BPHERO</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+      
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="../../vendor/simplebar/dist/simplebar.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../../css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="../../css/custom.css">
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="page-wrapper d-flex flex-column">
+      <!-- Navbar (Floating dark)-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="header navbar navbar-expand-lg navbar-light navbar-floating navbar-sticky" data-scroll-header="" data-fixed-element="">
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button>
+          <a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index.html">
+            <img src="../../img/logo.png" alt="HEROロゴ" width="88">   
+          </a>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
+              <a class="nav-link-style " href="#">
+                <i class="ai-bell fs-xl me-3 align-middle"></i>
+              </a>
+              <button class="btn p-0 nav-link-style" type="button" data-bs-toggle="modal" data-bs-target="#service_switch">
+                <i class="ai-users fs-xl align-middle"></i>
+              </button>
+            </div>
+        </div>
+      </header>
+      <div class="offcanvas  order-lg-2" id="primaryMenu">
+        <div class="offcanvas-header justify-content-space-between align-items-center pb-0">
+          <a class="nav-link p-0" href="#" ><i class="ai-home align-baseline"></i><span class="ms-2">ホーム画面</span></a>
+          <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <!-- Menu-->
+          <ul class="navbar-nav">
+            <div class="navbar__wrapper d-flex justify-content-between align-items-center">
+              <span><b>アカウント</b></span> 
+              <span class="badge bg-dark ">無料会員</span>
+            </div>
+            <li class="nav-item ">
+               <a class="nav-link " href="#" ><img class="rounded-circle" src="../../img/main.jpg" alt="Product" width="60"><span class="ms-2">田中　太郎</span></a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="#" >プロフィールの確認・変更</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="#" >アカウント情報の確認・変更</a>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav mt-2">
+            <b>その他</b>
+            <li class="nav-item ">
+              <a class="nav-link " href="#" >基本設定</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="#" >ヘルプ</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="#" >ログアウト</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link " href="#" >退会</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal fade" id="dialogue" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p class="text-center">株式会社YNS　<br/>
+                から退出しますか？
+                </p>
+                <div class="d-flex align-items-center justify-content-center">
+                  <button class="btn btn-primary btn--dialogue" style="width: 200px;">退出する</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="service_switch" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title ">サービス主体選択</h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="switch">
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch1" />
+                    <label class="form-check-label" for="switch1">田中太郎（RIO）</label>
+                </div>
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch2" checked/>
+                    <label class="form-check-label" for="switch2">株式会社YNS</label>
+                </div>
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch3" />
+                    <label class="form-check-label" for="switch3">HERO開発チーム</label>
+                </div>
+              </div>
+              <div class="py-5 text-center">
+                <a href="#" class="nav-link">
+                  + 新しくNEOを作る
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="privacy" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title ">管理メニュー</h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <ul class="list-group">
+                <li class="list-group-item">
+                  <a href="#" class="d-block c-primary">プロフィール設定</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="#" class="d-block c-primary">プライバシー設定</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="#" class="d-block c-primary">管理者管理</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="#" class="d-block c-primary">決済パスワード設定</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="#" class="d-block c-primary">決済情報管理</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="#" class="d-block c-primary">参加申請・招待管理</a>
+                </li>
+                <li class="list-group-item">
+                  <a href="#" class="d-block c-primary">契約情報確認・変更</a>
+                </li>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Page content-->
+      <!-- Page content-->
+      <div class="container container--mobile">
+        <div class="row align-items-center pt-4">
+          <div class="col-md-12">
+            <div class="card p-4 d-flex flex-column">
+              <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center justify-content-center flex-column">
+                  <img class="rounded-circle d-block" src="../../img/main.jpg" alt="Product" width="80">
+                </div>
+                <div class="m-0 ms-4" >
+                  <p class="m-0" style="flex: 1;">株式会社YNS</p>
+                </div>
+                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="modal" data-bs-target="#privacy"><i class="ai-more-vertical"></i></button>
+              </div>
+              <div class="d-flex flex-wrap">
+                <button class="fs-xs btn btn-primary mt-2 me-2" type="button" data-bs-toggle="modal" data-bs-target="#dialogue">
+                  参加申請
+                </button>
+                <button class="fs-xs btn btn-primary mt-2" type="button" data-bs-toggle="modal" data-bs-target="#dialogue">
+                  つながり申請
+                </button>
+              </div>
+            </div>
+            
+           
+            <div class="bg-secondary p-4  mt-4 ">
+              <ul class="nav nav-tabs tabs--custom d-flex" role="tablist">
+                <li class="nav-item m-0">
+                  <a href="#about" class="nav-link px-md-4 px-0 text-center active" data-bs-toggle="tab" role="tab">
+                    自己紹介
+                  </a>
+                </li>
+                <li class="nav-item m-0">
+                  <a href="#info" class="nav-link px-md-4 px-0 text-center" data-bs-toggle="tab" role="tab">
+                    詳細情報
+                  </a>
+                </li>
+                <li class="nav-item m-0">
+                  <a href="#participant" class="nav-link px-md-4 px-0 text-center" data-bs-toggle="tab" role="tab">
+                    参加者
+                  </a>
+                </li>
+              </ul>
+              <!-- Tabs content -->
+              <div class="tab-content">
+                <div class="tab-pane fade show active" id="about" role="tabpanel">
+                  <div class="card p-4 shadow">
+                    <p>自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。
+                    </p>  
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="info" role="tabpanel">
+                  <div class="card p-4 shadow">
+                    <p>自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。自己紹介文が入ります。
+                    </p>  
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="participant" role="tabpanel">
+                  <div class="card p-2 shadow">
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item px-0 py-2 position-relative">
+                        <a href="#">
+                          <img class="rounded-circle me-2 d-inline-block" src="../../img/main.jpg" alt="Product" width="40">
+                          <span class="fs-xs c-primary ms-2">田中太郎</span>
+                          <span class="badge bg-danger fs-xs participant__badge">オーナー</span>
+                        </a>
+                      </li>
+                      <li class="list-group-item px-0 py-2 position-relative">
+                        <a href="#">
+                          <img class="rounded-circle me-2 d-inline-block" src="../../img/main.jpg" alt="Product" width="40">
+                          <span class="fs-xs c-primary ms-2">田中太郎</span>
+                        </a>
+                      </li>
+                      <li class="list-group-item px-0 py-2 position-relative">
+                        <a href="#">
+                          <img class="rounded-circle me-2 d-inline-block" src="../../img/main.jpg" alt="Product" width="40">
+                          <span class="fs-xs c-primary ms-2">田中太郎</span>
+                        </a>
+                      </li>
+                      <li class="list-group-item px-0 py-2 position-relative">
+                        <a href="#">
+                          <img class="rounded-circle me-2 d-inline-block" src="../../img/main.jpg" alt="Product" width="40">
+                          <span class="fs-xs c-primary ms-2">田中太郎</span>
+                        </a>
+                      </li>
+                      <li class="list-group-item px-0 py-2 position-relative">
+                        <a href="#">
+                          <img class="rounded-circle me-2 d-inline-block" src="../../img/main.jpg" alt="Product" width="40">
+                          <span class="fs-xs c-primary ms-2">田中太郎</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <h3 class="mt-4">プロフィール動画</h1>
+              <div class="w-100 py-5 d-flex align-items-center justify-content-center">
+                <p>動画が登録されていません</p>
+              </div>
+              <h3 class="mt-4">登録商材</h1>
+                <div class="row product__registered">
+                  <div class="col-12 ">
+                    <div class="card flex-md-row p-md-4">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                          <h5 class="card-title">〇〇代行サービス</h5>
+                        </div>
+                        
+                        <p class="card-text fs-sm"> 
+                          〇〇をお値打ち価格で代行するサービスです。税込5000円。ご連絡ください。<br>
+                          【参考リンク】<br><br>
+                          https://########
+                          
+                      </p></div><img class="card-img-bottom rounded-md-0 w-md-25" src="../../img/500.png" alt="Card image">
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="card flex-md-row p-md-4">
+                      <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                          <h5 class="card-title">〇〇代行サービス</h5>
+                        </div>
+                        
+                        <p class="card-text fs-sm"> 
+                          〇〇をお値打ち価格で代行するサービスです。税込5000円。ご連絡ください。<br>
+                          【参考リンク】<br><br>
+                          https://########
+                          
+                      </p></div><img class="card-img-bottom rounded-md-0 w-md-25" src="../../img/500.png" alt="Card image">
+                    </div>
+                  </div>
+                </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer py-4">
+        <div class="container  align-items-center justify-content-between py-2 d-md-flex">
+          <ul class="list-inline fs-sm mb-3 mb-md-0 order-md-2">
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">運営会社</a></li>
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">利用規約</a></li>
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">プライバシーポリシー</a></li>
+          </ul>
+          <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">Copyright © HERO, Inc. All Rights Reserved.</span></p>
+        </div>
+      </footer>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="../../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Main theme script-->
+    <script src="../../js/theme.min.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+        document.querySelector('#upload-img').addEventListener('change', function() {
+            document.querySelector('#imagePrev').style.display = "block";
+            if (this.files && this.files[0]) {
+                var img = document.querySelector('#imagePrev');
+                img.onload = () => {
+                    URL.revokeObjectURL(img.src);  // no longer needed, free memory
+                }
+
+                img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+            }
+        });
+      });
+    </script>
+    <script>
+      document.querySelector('.delete').addEventListener("click", function(){
+        document.querySelector('#upload-img').value = null;
+        document.querySelector('#imagePrev').style.display = "none";
+      });
+      document.querySelector('.delete--file-input').addEventListener("click", function(){
+        document.querySelector('#file-input').value = null;
+      });
+    </script>
+  </body>
+</html>

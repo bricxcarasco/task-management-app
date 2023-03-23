@@ -1,0 +1,342 @@
+/*************************
+ *   FORM PREVIEW CSS
+ *************************/
+
+.preview {
+    color: black;
+    padding-bottom: 5px;
+}
+
+.preview__header {
+    letter-spacing: 30px;
+    text-align: center;
+}
+
+.preview__header:after {
+    content: ' ';
+    margin-left: -30px;
+}
+
+.preview__header--receipt {
+    font-weight: bold !important;
+    font-size: 34px !important;
+}
+
+.preview__table-amount {
+    font-size: 20px !important;
+    vertical-align: middle;
+    letter-spacing: 10px;
+}
+
+.preview__table-amount:after {
+    content: ' ';
+    margin-left: -10px;
+}
+
+.preview__table-date {
+    letter-spacing: 18px;
+}
+
+.preview__table-date:after {
+    content: ' ';
+    margin-left: -18px;
+}
+
+.preview__table-price {
+    font-size: 26px !important;
+}
+
+.preview__table-h20 {
+    height: 20px;
+    vertical-align: middle;
+}
+
+.preview__table-label {
+    font-weight: bold !important;
+}
+
+.preview__section {
+    margin-top: 10px;
+}
+
+.preview__table {
+    border-color: #737491;
+    font-size: 14px;
+    table-layout: fixed;
+}
+
+.preview__table td {
+    padding: 0 10px;
+    word-break: break-word;
+}
+
+.preview__table--receipt td {
+    font-size: 16px;
+}
+
+.preview__table-row--receipt {
+    font-weight: bold;
+}
+
+.preview__table--no-border {
+    border: none;
+}
+
+.preview__table--no-border td {
+    border-bottom-width: 0;
+}
+
+.preview__table--border td {
+    border: 1px solid #737491;
+}
+
+.preview__table-th {
+    color: white;
+    background-color: #333399;
+    text-align: center;
+}
+
+.preview__table--bottom-line {
+    border-bottom: 1px solid #737491 !important;
+}
+
+.preview__table--border-double {
+    border-top: #737491 double !important;
+    border-bottom: #737491 double !important;
+}
+
+.preview__table-supplier {
+    font-size: 25px;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+}
+
+.preview__table-supplier--receipt {
+    font-size: 25px !important;
+}
+
+.preview__table-remarks {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.preview__table-remarks--purchase {
+    padding-left: 65px !important;
+}
+
+.preview__table-delivery {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+.preview__table-payee {
+    letter-spacing: normal;
+}
+
+.preview__table-remarks:after {
+    content: ' ';
+    margin-left: -5px;
+}
+
+.preview__table-paragraph {
+    text-align: justify;
+    text-decoration: underline #737491;
+    white-space: pre-line;
+    padding: 0 !important;
+}
+
+.preview__paragraph {
+    font-size: 8px;
+    color: #737491;
+    text-align: justify;
+    text-decoration: underline #737491;
+    white-space: pre-line;
+    padding: 0 !important;
+}
+
+.preview__table--blank-row {
+    background-color: #fff;
+    height: 15px;
+}
+
+.preview__table-image {
+    height: 60px;
+    float: right;
+}
+
+.preview__stamp {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    right: 0;
+}
+
+.preview__stamp-box {
+    padding: 25px 30px !important;
+    border: 2px solid #737491;
+    position: relative;
+}
+
+.border-none {
+    border: none !important;
+}
+
+.left-border-none {
+    border-left: none !important;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.float-right {
+    float: right;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-25 {
+    width: 25%;
+}
+
+.w-10 {
+    width: 10%;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.v-align-top {
+    vertical-align: top;
+}
+
+.position-relative {
+    position: relative;
+}
+
+@media (max-width: 992px) {
+    .preview__table td {
+        font-size: 8px;
+        font-weight: 500;
+    }
+    .preview__table--receipt td {
+        font-size: 14px;
+    }
+    .preview__table-price {
+        font-size: 20px !important;
+    }
+    .preview__table-amount {
+        font-size: 16px !important;
+    }
+    .preview__table-supplier {
+        font-size: 14px !important;
+        font-weight: bold !important;
+    }
+    .preview__table-remarks {
+        font-weight: bold !important;
+        font-size: 12px !important;
+    }
+    .preview__table-remarks--purchase {
+        padding-left: 40px !important;
+    }
+    .preview__table-delivery {
+        font-weight: bold !important;
+        font-size: 12px !important;
+    }
+    .preview__table-image {
+        height: 40px;
+    }
+    .preview__stamp-box {
+        padding: 15px !important;
+    }
+    .preview__header--receipt {
+        font-size: 24px !important;
+    }
+}
+
+@media (max-width: 473px) {
+    .preview__table-date {
+        letter-spacing: normal;
+    }
+    .preview__table-date:after {
+        content: ' ';
+        margin-left: 0;
+    }
+    .preview__header--receipt {
+        font-size: 18px;
+    }
+    .preview__table-price {
+        font-size: 18px !important;
+    }
+    .preview__table--receipt td {
+        font-size: 14px;
+    }
+    .preview__table-data--sm {
+        font-size: 8px !important;
+        font-weight: bolder !important;
+        vertical-align: middle;
+    }
+    .preview__table-remarks {
+        font-weight: bold !important;
+        font-size: 10px !important;
+        letter-spacing: normal;
+    }
+    .preview__table-remarks--purchase {
+        padding-left: 35px !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .preview__table-date {
+        letter-spacing: normal;
+    }
+    .preview__table-date:after {
+        content: ' ';
+        margin-left: 0;
+    }
+    .preview__header--receipt {
+        font-size: 18px;
+    }
+    .preview__table-price {
+        font-size: 17px !important;
+    }
+    .preview__table--receipt td {
+        font-size: 14px;
+    }
+    .preview__table-data--sm {
+        font-size: 8px !important;
+        font-weight: bolder !important;
+        vertical-align: middle;
+    }
+    .preview__table-remarks {
+        font-weight: bold !important;
+        font-size: 8px !important;
+        letter-spacing: normal !important;
+    }
+}

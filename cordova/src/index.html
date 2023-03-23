@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: <%= htmlWebpackPlugin.options.targetApp %> https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *">
+    <script src="components/loader.js"></script>
+    <link rel="stylesheet" href="components/loader.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loading active">
+        <div class="page-loading-inner">
+            <div class="page-spinner"></div><span>Loading...</span>
+        </div>
+    </div>
+
+    <!-- Redirection Link -->
+    <a id="target-link" href="<%= htmlWebpackPlugin.options.targetApp %>?platform_device=Others">
+        <%= htmlWebpackPlugin.options.targetApp %>
+    </a>
+
+    <script type="text/javascript" src="dist/main.js"></script>
+</body>
+</html>

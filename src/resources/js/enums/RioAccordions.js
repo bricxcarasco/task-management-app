@@ -1,0 +1,23 @@
+/**
+ * RIO Accordions enums
+ */
+
+const Accordions = {
+  NAME: 1,
+  BIRTHDAY: 2,
+  GENDER: 3,
+  PRESENT_ADDRESS: 4,
+  HOME_ADDRESS: 5,
+  SELF_INTRODUCTION: 6,
+  INDUSTRY: 7,
+  PROFESSION: 8,
+  PROFILE_VIDEO: 9,
+  EDUCATIONAL_BACKGROUND: 10,
+  TELEPHONE: 11,
+  QUALIFICATION_SKILLS: 12,
+  AWARD_HISTORY: 13,
+  PRODUCTS: 14,
+  BUSINESS: 15,
+};
+
+export default Accordions;

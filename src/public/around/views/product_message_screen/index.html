@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BPHERO</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+      
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="../../vendor/simplebar/dist/simplebar.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../../css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="../../css/custom.css">
+  </head>
+  <!-- Body-->
+  <body class="is-sidebar">
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="page-wrapper d-flex flex-column">
+      <div class="modal fade" id="modalDefault" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">共有設定
+              </h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="fs-sm">選択したファイルをトークルームの参加者全員に共有し、ファイルの共有リンクをペーストしますか？
+              </p>
+              <div class="text-center">
+                <button class="btn btn-primary" type="button">共有してリンクをぺーストする</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="selectSharedDocument" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">共有設定</h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="bg-dark c-white p-2 mb-0">ファイル</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item px-0 py-2 position-relative list--white px-2">
+                    <i class="h2 m-0 ai-folder"></i>
+                    <span class="fs-xs c-primary ms-2" for="file">フォルダタイトル1</span>
+                </li>
+                <li class="list-group-item px-0 py-2 position-relative list--white px-2">
+                    <i class="h2 m-0 ai-folder"></i>
+                    <span class="fs-xs c-primary ms-2">フォルダタイトル1</span>
+                </li>
+              </ul>
+              <p class="bg-dark c-white p-2 mb-0 mt-2">ファイル</p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item px-0 py-2 position-relative list--white px-2 " data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalDefault">
+                  <i class="h2 m-0 ai-image"></i>
+                  <span class="fs-xs c-primary ms-2">ファイルタイトル1.jpg</span>
+                </li>
+                <li class="list-group-item px-0 py-2 position-relative list--white px-2">
+                    <i class="h2 m-0 ai-file-text"></i>
+                    <span class="fs-xs c-primary ms-2">ファイルタイトル2.pdf</span>
+                </li>
+                <li class="list-group-item px-0 py-2 position-relative list--white px-2">
+                    <i class="h2 m-0 ai-image"></i>
+                    <span class="fs-xs c-primary ms-2">ファイルタイトル3.png</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade modal-file" id="sharedDocument" tabindex="-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body pb-0">
+              <ul class="list-group ">
+                <li class="list-group-item" id="uploadFile" data-bs-dismiss="modal">ローカルからファイル選択</li>
+                <li class="list-group-item sharedDocumentBtn" data-bs-toggle="modal" data-bs-target="#selectSharedDocument" data-bs-dismiss="modal">文書管理から共有ファイルを選択
+                </li>
+                <!-- <li class="list-group-item"></li> -->
+              </ul>
+            </div>
+            <div class="modal-footer justify-content-start">
+              <button class="btn btn-link c-primary w-100 text-start" type="button" data-bs-dismiss="modal">キャンセル</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="issuePayment" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title ">決済画面を発行</h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="d-flex border align-items-center justify-content-between rounded-3  p-2">
+                <img class="img-rounded me-4" src="../../img/main.jpg" alt="Image" width="60">
+                <p class="mb-2 flex-1">田中  太郎</p>
+              </div>
+              <div class="mt-2">
+                <label for="text-input" class="form-label">■取引金額（税及び送料込み）</label>
+                <div class="d-flex align-items-center justify-content-between">
+                  <input class="form-control flex-1 me-2" type="text" id="text-input">
+                  <span>円</span>
+                </div>
+              </div>
+              <div class="mt-2">
+                <label for="select-input" class="form-label">■決済方法 </label>
+                <select class="form-select" id="select-input">
+                  <option>クレジットカード</option>
+                </select>
+              </div>
+              <div class="mt-2">
+                <p class="ps-3 form-label">■振込先口座情報</p>
+                <div class="border p-2">
+                  三井住友銀行　府中支店（普） <br>
+                  1234567 <br>
+                  カ）ワイエヌエス
+                </div>
+                <div class="border mt-2 p-2">
+                  みずほ銀行　府中支店（普）  <br>
+                  1234567 <br>
+                  カ）ワイエヌエス
+                </div>
+              </div>
+              <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#issuancePayment" data-bs-dismiss="modal">この情報で決済画面を発行</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal fade" id="issuancePayment" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title ">決済画面を発行
+              </h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="text-center">決済画面URLを発行しました。</p>
+              <div class="border p-2">
+                <div class="d-flex align-items-center justify-content-between">
+                  <span>決済ページURL</span>
+                  <button type="button" class="btn btn-link p-0">コピー</button>
+                </div>
+                <a href="#">https://##########</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="service_switch" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title ">サービス主体選択</h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="switch">
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch1" />
+                    <label class="form-check-label" for="switch1">田中太郎（RIO）</label>
+                </div>
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch2" checked/>
+                    <label class="form-check-label" for="switch2">株式会社YNS</label>
+                </div>
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch3" />
+                    <label class="form-check-label" for="switch3">HERO開発チーム</label>
+                </div>
+              </div>
+              <div class="py-5 text-center">
+                <a href="#" class="nav-link">
+                  + 新しくNEOを作る
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar (Floating dark)-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="header navbar navbar-expand-lg navbar-light navbar-floating navbar-sticky" data-scroll-header data-fixed-element>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button>
+          <a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index.html">
+            <img src="../../img/logo.png" alt="HEROロゴ" width="88">   
+          </a>
+          <div class="collapse navbar-collapse order-lg-2" id="navbarCollapse1">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-home"></i></a></li>
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-message-square"></i></a></li>
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-calendar"></i></a></li>
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-list"></i></a></li>
+            </ul>
+          </div>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
+              <a class="nav-link-style " href="#" >
+                <i class="ai-bell fs-xl me-3 align-middle"></i>
+              </a>
+              <a class="nav-link-style d-none d-md-inline-block" href="#">
+                ヘルプ
+              </a>
+              <button class="btn p-0 nav-link-style d-inline-block d-md-none" type="button" data-bs-toggle="modal" data-bs-target="#service_switch">
+                <i class="ai-users fs-xl align-middle"></i>
+              </button>
+            </div>
+        </div>
+      </header>
+      <div class="offcanvas  order-lg-2" id="primaryMenu">
+        <div class="offcanvas-header pb-0 justify-content-end">
+          <!-- <a class="nav-link p-0" href="#" ><i class="ai-home align-baseline"></i><span class="ms-2">ホーム画面</span></a> -->
+          <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="px-4 py-4 mb-1 text-center"><img class="d-block rounded-circle mx-auto my-2" src="../../img/main.jpg" at="Amanda Wilson" width="110">
+          <h6 class="mb-0 pt-1">田中　太郎</h6>
+        </div>
+        <div class="d-lg-block collapsed pb-2" id="account-menu">
+          <h3 class="d-block d-flex align-items-center bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">
+            アカウント
+            <span class="text-muted fs-sm fw-normal ms-auto badge bg-dark ">無料会員</span>
+          </h3>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">
+            ホーム画面
+          </a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">
+            アカウント情報
+          </a>
+          <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">その他</h3>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">基本設定</a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">ヘルプ</a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">ログアウト</a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">退会</a>
+          <!-- <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="signin-illustration.html"><i class="ai-log-out fs-lg opacity-60 me-2"></i>ログアウト</a> -->
+        </div>
+      </div>
+      <!-- Page content-->
+      <div class="message__wrapper">
+        <div class="bg-gray text-center py-2 d-none">RIO（田中太郎）</div>
+        <div class="container">
+          <h3 class="py-3 mb-0 text-center"> 株式会社YNSの クラシファイド</h3>
+          <div class="text-center">
+            <button type="button" class="btn btn-primary w-100 w-md-auto" data-bs-toggle="modal" data-bs-target="#issuePayment">決済画面を発行する</button>
+          </div>
+          <div class="text-center position-relative p-2 border-bottom">
+            <i class="ai-arrow-left message__back"></i>
+            <strong>佐藤一朗</strong>
+          </div>
+        </div>
+       
+            
+      </div>
+      <!-- Page content-->
+      <div class="container position-relative zindex-5 h-100 mb-md-3 " >
+        <div class="row">
+          <div class="col-md-4 d-none d-md-block position-relative">
+            <div class="message__tools mt-4 ">
+                <div class="mb-2">
+                    <select class="form-select" id="select-input">
+                        <option>田中太郎（RIO）</option>
+                        <option>株式会社YNS</option>
+                        <option>HERO開発チーム</option>
+                    </select>
+                </div>
+                <div class="text-end mb-2">
+                  <a href="#"><i class="ai-plus me-2"></i>NEOメッセージ作成する</a>
+                </div>
+                <div class="mb-2 pb-4 border-bottom">
+                    <div class="input-group">
+                        <input class="form-control text-center" type="text" id="text-input" placeholder="田中">
+                        <button class="btn btn-translucent-dark" type="button">検索</button>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between ">
+                    <p class="mb-0 ">トークルーム一覧 </p>
+                    <!-- <button class="btn btn-link" type="button" ></button> -->
+                    <div class="btn-group dropdown dropstart">
+                        <button type="button" class="btn btn-link " data-bs-toggle="dropdown" id="dropdownMenuButton1" aria-haspopup="true" aria-expanded="false">
+                            <i class="ai-more-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <a href="#" class="dropdown-item">NEOチームチャット作成</a>
+                        <a href="#" class="dropdown-item">アーカイブを復元する</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <ul class="list-group list-group-flush messages mt-2" >
+                <li class="list-group-item">
+                    <div class="d-flex  justify-content-between align-items-center">
+                        <span class="text-danger" style="flex:1"><strong>つながり</strong></span>
+                        <span class="fs-md me-2">2021/7/1 18:50</span>
+                        <button type="button" class="btn btn-link p-0" style="width: 25px;"><i class="ai-archive c-primary"></i></button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="60">
+                        <div>
+                            <p class="mb-0">YNSの開発チーム</p>
+                            <p class="mb-0 fs-xs text-gray">初めまして佐藤と申します。この度は…</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex  justify-content-between align-items-center">
+                        <span class="text-danger" style="flex:1"><strong>NEOチーム</strong></span>
+                        <span class="fs-md me-2">2021/7/1 18:50</span>
+                        <button type="button" class="btn btn-link p-0" style="width: 25px;"><i class="ai-archive c-primary"></i></button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="60">
+                        <div>
+                            <p class="mb-0">YNSの開発チーム</p>
+                            <p class="mb-0 fs-xs text-gray">先日のMTGで出た議題についてですが…</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex  justify-content-between align-items-center">
+                        <span class="text-danger" style="flex:1"><strong>つながりグループ</strong></span>
+                        <span class="fs-md me-2">2021/7/1 18:50</span>
+                        <button type="button" class="btn btn-link p-0" style="width: 25px;"><i class="ai-archive c-primary"></i></button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="60">
+                        <div>
+                            <p class="mb-0">AAAグループ</p>
+                            <p class="mb-0 fs-xs text-gray">初めましてAAAと申します。この度は…</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex  justify-content-between align-items-center">
+                        <span class="text-danger" style="flex:1"><strong>NEOメッセージ</strong></span>
+                        <span class="fs-md me-2">2021/7/1 18:50</span>
+                        <button type="button" class="btn btn-link p-0" style="width: 25px;"><i class="ai-archive c-primary"></i></button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="60">
+                        <div>
+                            <p class="mb-0">株式会社YNS</p>
+                            <p class="mb-0 fs-xs text-gray">先日のリリース、みなさまお疲れ様で…</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex  justify-content-between align-items-center">
+                        <span class="text-danger" style="flex:1"><strong>つながり</strong></span>
+                        <span class="fs-md me-2">2021/7/1 18:50</span>
+                        <button type="button" class="btn btn-link p-0" style="width: 25px;"><i class="ai-archive c-primary"></i></button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="60">
+                        <div>
+                            <p class="mb-0">株式会社DDD</p>
+                            <p class="mb-0 fs-xs text-gray">トークルームが作成されました</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex  justify-content-between align-items-center">
+                        <span class="text-danger" style="flex:1"><strong>NEOチーム</strong></span>
+                        <span class="fs-md me-2">2021/7/1 18:50</span>
+                        <button type="button" class="btn btn-link p-0" style="width: 25px;"><i class="ai-archive c-primary"></i></button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="60">
+                        <div>
+                            <p class="mb-0">YNSの開発チーム</p>
+                            <p class="mb-0 fs-xs text-gray">先日のMTGで出た議題についてですが…</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex  justify-content-between align-items-center">
+                        <span class="text-danger" style="flex:1"><strong>つながりグループ</strong></span>
+                        <span class="fs-md me-2">2021/7/1 18:50</span>
+                        <button type="button" class="btn btn-link p-0" style="width: 25px;"><i class="ai-archive c-primary"></i></button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="60">
+                        <div>
+                            <p class="mb-0">AAAグループ</p>
+                            <p class="mb-0 fs-xs text-gray">初めましてAAAと申します。この度は…</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex  justify-content-between align-items-center">
+                        <span class="text-danger" style="flex:1"><strong>NEOメッセージ</strong></span>
+                        <span class="fs-md me-2">2021/7/1 18:50</span>
+                        <button type="button" class="btn btn-link p-0" style="width: 25px;"><i class="ai-archive c-primary"></i></button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="60">
+                        <div>
+                            <p class="mb-0">株式会社YNS</p>
+                            <p class="mb-0 fs-xs text-gray">先日のリリース、みなさまお疲れ様で…</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="d-flex  justify-content-between align-items-center">
+                        <span class="text-danger" style="flex:1"><strong>つながり</strong></span>
+                        <span class="fs-md me-2">2021/7/1 18:50</span>
+                        <button type="button" class="btn btn-link p-0" style="width: 25px;"><i class="ai-archive c-primary"></i></button>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="60">
+                        <div>
+                            <p class="mb-0">株式会社DDD</p>
+                            <p class="mb-0 fs-xs text-gray">トークルームが作成されました</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+          </div>
+          <div class="col-md-8 col-12 p-0 position-relative">
+              <ul class="chat px-2 pb-4">
+                  <li class="chat__wrapper you">
+                      <div class="chat__box p-3">
+                          <span class="chat__name">田中太郎</span>
+                          <p class="chat__content fs-md mt-2 m-0">初めまして、佐藤と申します。この度はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ</p>
+                      </div>
+                      <p class="chat__time mt-2 mb-0 fs-xs text-end">2021 1/1 13:00</p>
+                  </li>
+                  <li class="chat__wrapper sender d-flex align-items-end">
+                      <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="50" height="50">
+                      <div>
+                          <div class="chat__box p-3">
+                              <span class="chat__name">佐藤一朗</span>
+                              <p class="chat__content fs-md mt-2 m-0">初めまして、佐藤と申します。この度はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ
+                              </p>
+                          </div>
+                          <p class="chat__time mt-2 mb-0 fs-xs">2021/ 1/1 13:00</p>
+                      </div>
+                  </li>
+                  <li class="chat__wrapper sender d-flex align-items-end">
+                      <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="50" height="50">
+                      <div>
+                          <div class="chat__box p-3">
+                              <span class="chat__name">佐藤一朗</span>
+                              <p class="chat__content fs-md mt-2 m-0">初めまして、佐藤と申します。この度はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ
+                              </p>
+                          </div>
+                          <p class="chat__time mt-2 mb-0 fs-xs">2021/ 1/1 13:00</p>
+                      </div>
+                  </li>
+                  <li class="chat__wrapper sender d-flex align-items-end">
+                      <img class="rounded-circle me-3" src="../../img/main.jpg" alt="Product" width="50" height="50">
+                      <div>
+                          <div class="chat__box p-3">
+                              <span class="chat__name">佐藤一朗</span>
+                              <p class="chat__content fs-md mt-2 m-0">初めまして、佐藤と申します。この度はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ
+                              </p>
+                          </div>
+                          <p class="chat__time mt-2 mb-0 fs-xs">2021/ 1/1 13:00</p>
+                      </div>
+                  </li>
+                  <li class="chat__wrapper you">
+                      <div class="chat__box p-3">
+                          <span class="chat__name">田中太郎</span>
+                          <p class="chat__content fs-md mt-2 m-0">初めまして、佐藤と申します。この度はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ</p>
+                      </div>
+                      <p class="chat__time mt-2 mb-0 fs-xs text-end">2021 1/1 13:00</p>
+                  </li>
+                  <li class="chat__wrapper you">
+                      <div class="chat__box p-3">
+                          <span class="chat__name">田中太郎</span>
+                          <p class="chat__content fs-md mt-2 m-0">初めまして、佐藤と申します。この度はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ</p>
+                      </div>
+                      <p class="chat__time mt-2 mb-0 fs-xs text-end">2021 1/1 13:00</p>
+                  </li>
+                  <li class="chat__wrapper you">
+                      <div class="chat__box p-3">
+                          <span class="chat__name">田中太郎</span>
+                          <p class="chat__content fs-md mt-2 m-0">初めまして、佐藤と申します。この度はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ</p>
+                      </div>
+                      <p class="chat__time mt-2 mb-0 fs-xs text-end">2021 1/1 13:00</p>
+                  </li>
+                  <li class="chat__wrapper you">
+                      <div class="chat__box p-3">
+                          <span class="chat__name">田中太郎</span>
+                          <p class="chat__content fs-md mt-2 m-0">初めまして、佐藤と申します。この度はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ</p>
+                      </div>
+                      <p class="chat__time mt-2 mb-0 fs-xs text-end">2021 1/1 13:00</p>
+                  </li>
+                  <li class="chat__wrapper you">
+                      <div class="chat__box p-3">
+                          <span class="chat__name">田中太郎</span>
+                          <p class="chat__content fs-md mt-2 m-0">初めまして、佐藤と申します。この度はテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキ</p>
+                      </div>
+                      <p class="chat__time mt-2 mb-0 fs-xs text-end">2021 1/1 13:00</p>
+                  </li>
+              </ul>
+              <!-- <div class="d-flex align-items-center justify-content-center p-2 chat__message bg-gray">
+                このメッセージには返信できません
+              </div> -->
+              <div class="d-flex align-items-center justify-content-center p-2 chat__message bg-light">
+                  <label data-bs-toggle="modal" data-bs-target="#sharedDocument">
+                      <i class="ai-file-plus fs-2 me-2"></i>
+                  </label>
+                  <!-- <input id="file-input" class="d-none" type="file"/> -->
+                  <input type="file"  class="custom-file-input d-none"  id="file"  multiple  onchange="javascript:updateList()" />
+
+                  <div class="position-relative  me-2 d-flex flex-column flex-column-reverse w-100">
+                    <input class="form-control" type="text" id="message-input" value="">
+                    <ul id="fileList" class="file-list"></ul>
+                  </div>
+                  <button class="btn btn-primary">送信</button>
+              </div>
+          </div>
+        </div>
+      </div>
+     
+    </main>
+    <footer class="footer py-4 pb-5 pb-md-4">
+        <div class="container  d-md-flex align-items-center justify-content-between py-2">
+          <ul class="list-inline fs-sm mb-3 mb-md-0 order-md-2">
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">運営会社</a></li>
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">利用規約</a></li>
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">プライバシーポリシー</a></li>
+          </ul>
+          <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">Copyright © HERO, Inc. All Rights Reserved.</span></p>
+        </div>
+      </footer>
+      <div class="btn-toolbar sidebar-toggle btn-toolbar--custom menu__bar" role="toolbar" aria-label="Settings toolbar">
+        <div class="btn-group me-2 mb-2" role="group" aria-label="Settings group">
+          <button type="button" class="btn btn-secondary btn-icon">
+            <i class="ai-message-square"></i>
+          </button>
+          <button type="button" class="btn btn-secondary btn-icon">
+            <i class="ai-calendar"></i>
+          </button>
+          <button type="button" class="btn btn-secondary btn-icon">
+            <i class="ai-list"></i>
+          </button>
+        </div>
+      </div>
+      <!-- <button class="btn btn-primary btn-sm sidebar-toggle" type="button"><i class="ai-sidebar fs-base me-2"></i>Sidebar</button> -->
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="../../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Main theme script-->
+    <script src="../../js/theme.min.js"></script>
+    <script>
+      let favoriteBtn = document.querySelectorAll('.button__favorite');
+      for (let index = 0; index < favoriteBtn.length; index++) {
+        const element = favoriteBtn[index];
+        // console.log(element);
+        element.addEventListener('click', function () {
+          this.classList.toggle('favorite');
+          let favoriteIcon = element.children[0].classList;
+          if (this.classList.contains('favorite')) {
+            favoriteIcon.remove('ai-star');
+            favoriteIcon.add('ai-star-filled');
+          } else {
+            favoriteIcon.add('ai-star');
+            favoriteIcon.remove('ai-star-filled');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

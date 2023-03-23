@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+cd src
+echo "\nhusky|lint-staged is running...\n"
+npm run pre-commit
+echo "\nlarastan is running...\n"
+./vendor/bin/phpstan analyse --memory-limit=2G

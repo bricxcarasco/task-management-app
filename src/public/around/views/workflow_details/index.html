@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>BPHERO</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Around - Multipurpose Bootstrap Template">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../img/favicon/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+      
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="../../vendor/simplebar/dist/simplebar.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="../../css/theme.min.css">
+    <link rel="stylesheet" media="screen" href="../../css/custom.css">
+  </head>
+  <!-- Body-->
+  <body class="is-sidebar">
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="page-wrapper d-flex flex-column">
+      <div class="modal fade" id="service_switch" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title ">サービス主体選択</h4>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="switch">
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch1" />
+                    <label class="form-check-label" for="switch1">田中太郎（RIO）</label>
+                </div>
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch2" checked/>
+                    <label class="form-check-label" for="switch2">株式会社YNS</label>
+                </div>
+                <div class="switch-default border-bottom py-3">
+                    <input type="radio" name="radio" id="switch3" />
+                    <label class="form-check-label" for="switch3">HERO開発チーム</label>
+                </div>
+              </div>
+              <div class="py-5 text-center">
+                <a href="#" class="nav-link">
+                  + 新しくNEOを作る
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="dialogue" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p class="text-center mb-0">申請リクエスト</p>              
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger btn-sm" type="button" data-bs-dismiss="modal">Reject</button>
+                <button class="btn btn-primary btn-sm" type="button">Approve</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="create" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">ワークフロー作成</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="text-center mb-0">申請内容を入力してください。</p>  
+              <div class="mb-3">
+                <label for="text-input" class="form-label">■タイトル</label>
+                <input class="form-control" type="text" id="text-input" >
+              </div>          
+              <div class="mb-3">
+                <label for="text-input" class="form-label">■説明</label>
+                <textarea class="form-control" type="text" id="text-input" ></textarea>
+              </div>   
+              <div class="mb-3">
+                <label for="select-input" class="form-label">■優先度</label>
+                <select class="form-select w-25 d-inline-block" id="select-input">
+                  <option>中</option>
+                </select>
+              </div>
+              <div class="mb-3 d-flex align-items-center justify-content-between">
+                <p class="form-label">■添付ファイル</p>
+                <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#sharedDocument" data-bs-dismiss="modal"><i class="ai-plus me-2"></i>追加</button>
+              </div>
+              <ul class="mb-5 px-2">
+                <li class="d-flex align-items-center justify-content-between ">
+                  <a href="#" class="fs-sm">https://##########</a>
+                  <button type="button" class="p-0 btn btn-link fs-sm">削除</button>
+                </li>
+                <li class="d-flex align-items-center justify-content-between ">
+                  <a href="#" class="fs-sm">https://##########</a>
+                  <button type="button" class="p-0 btn btn-link fs-sm">削除</button>
+                </li>
+                <li class="d-flex align-items-center justify-content-between ">
+                  <a href="#" class="fs-sm">https://##########</a>
+                  <button type="button" class="p-0 btn btn-link fs-sm">削除</button>
+                </li>
+                <li class="d-flex align-items-center justify-content-between ">
+                  <a href="#" class="fs-sm">https://##########</a>
+                  <button type="button" class="p-0 btn btn-link fs-sm">削除</button>
+                </li>
+              </ul>
+              <div class="text-center">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#approve" data-bs-dismiss="modal">次へ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="approve" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">ワークフロー作成</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="text-center mb-0">承認者を承認を求める順番で指定してください。</p>  
+              <ol class="mb-3 mt-5" id="list-approver">
+                <li>
+                  <div class="input-group">
+                    <input class="form-control text-center" type="text">
+                    <button class="btn btn-link border btn-icon" type="button"><i class="ai-x"></i></button>
+                  </div>
+                </li>
+                <li>
+                  <div class="input-group">
+                    <input class="form-control text-center" type="text">
+                    <button class="btn btn-link border btn-icon" type="button"><i class="ai-x"></i></button>
+                  </div>
+                </li>
+              </ol>       
+              <div class="text-center">
+                <button type="button" class="btn btn-link" id="add-approver"><i class="ai-plus me-2"></i>承認者を追加</button>
+              </div>
+              
+              <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary me-2">戻る</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmation" data-bs-dismiss="modal">次へ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="confirmation" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">ワークフロー作成</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="text-center mb-0">内容を確認し、完了ボタンを押してください。</p>  
+              <div class="mb-3">
+                <label class="fs-sm fw-bold">■タイトル</label>
+                <p class="mb-0">〇〇の申請</p>
+              </div>    
+              <div class="mb-3">
+                <label class="fs-sm fw-bold">■説明</label>
+                <p class="mb-0">テキストテキストテキストテキスト
+                  テキストテキストテキストテキスト
+                  テキストテキストテキストテキスト
+                  </p>
+              </div>   
+              <div class="mb-3">
+                <label class="fs-sm fw-bold">■優先度</label>
+                <p class="mb-0">中</p>
+              </div>  
+              <div class="mb-3">
+                <label class="fs-sm fw-bold">■添付ファイル</label>
+                <ul class="ps-0" style="list-style: none;">
+                  <li><a href="#">https://##########</a></li>
+                  <li><a href="#">https://##########</a></li>
+                  <li><a href="#">https://##########</a></li>
+                </ul>
+              </div>  
+              <div class="mb-3">
+                <label class="fs-sm fw-bold">■指定承認者</label>
+                <ol class="ps-0" style="list-style: none;">
+                  <li>田中 一朗</li>
+                  <li>田中 一朗</li>
+                  <li>田中 一朗</li>
+                </ol>
+              </div>  
+              <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary me-2">戻る</button>
+                <button type="button" class="btn btn-primary" >完了</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="selection" tabindex="-1" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">ワークフロー作成</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p class="text-center mb-0">内容を確認し、完了ボタンを押してください。</p>  
+              <div class="mb-3">
+                <label for="text-input" class="form-label">■承認・差戻・否決を選択</label>
+                <select class="form-select w-25" id="select-input">
+                  <option>承認</option>
+                </select>
+              </div> 
+              <div class="mb-3">
+                <label for="text-input" class="form-label">■コメントを入力してください。<br>
+                  （否決・差戻の場合は必須）
+                  </label>
+                  <textarea class="form-control" type="text" id="text-input" rows="3"></textarea>
+              </div>      
+              <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary" >完了</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade modal-file" id="sharedDocument" tabindex="-1" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-body pb-0">
+              <ul class="list-group ">
+                <li class="list-group-item" id="uploadFile" data-bs-dismiss="modal">ローカルからファイル選択</li>
+                <li class="list-group-item sharedDocumentBtn" data-bs-toggle="modal" data-bs-target="#selectSharedDocument" data-bs-dismiss="modal">文書管理から共有ファイルを選択</li>
+                <li class="list-group-item sharedDocumentBtn" data-bs-toggle="modal" data-bs-target="#selectSharedDocument" data-bs-dismiss="modal">文書管理から個人ファイルを選択</li>
+              </ul>
+            </div>
+            <div class="modal-footer justify-content-start">
+              <button class="btn btn-link c-primary w-100 text-start" type="button" data-bs-dismiss="modal">キャンセル</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navbar (Floating dark)-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="header navbar navbar-expand-lg navbar-light navbar-floating navbar-sticky" data-scroll-header data-fixed-element>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button>
+          <a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index.html">
+            <img src="../../img/logo.png" alt="HEROロゴ" width="88">   
+          </a>
+          <div class="collapse navbar-collapse order-lg-2" id="navbarCollapse1">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-home"></i></a></li>
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-message-square"></i></a></li>
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-calendar"></i></a></li>
+              <li class="nav-item"><a class="nav-link " href="#"><i class="fs-xl ai-list"></i></a></li>
+            </ul>
+          </div>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto">
+              <a class="nav-link-style " href="#" >
+                <i class="ai-bell fs-xl me-3 align-middle"></i>
+              </a>
+              <a class="nav-link-style d-none d-md-inline-block" href="#">
+                ヘルプ
+              </a>
+              <button class="btn p-0 nav-link-style d-inline-block d-md-none" type="button" data-bs-toggle="modal" data-bs-target="#service_switch">
+                <i class="ai-users fs-xl align-middle"></i>
+              </button>
+            </div>
+        </div>
+      </header>
+      <div class="offcanvas  order-lg-2" id="primaryMenu">
+        <div class="offcanvas-header pb-0 justify-content-end">
+          <!-- <a class="nav-link p-0" href="#" ><i class="ai-home align-baseline"></i><span class="ms-2">ホーム画面</span></a> -->
+          <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="px-4 py-4 mb-1 text-center"><img class="d-block rounded-circle mx-auto my-2" src="../../img/main.jpg" at="Amanda Wilson" width="110">
+          <h6 class="mb-0 pt-1">田中　太郎</h6>
+        </div>
+        <div class="d-lg-block collapsed pb-2" id="account-menu">
+          <h3 class="d-block d-flex align-items-center bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">
+            アカウント
+            <span class="text-muted fs-sm fw-normal ms-auto badge bg-dark ">無料会員</span>
+          </h3>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">
+            ホーム画面
+          </a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">
+            アカウント情報
+          </a>
+          <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">その他</h3>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">基本設定</a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">ヘルプ</a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">ログアウト</a>
+          <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">退会</a>
+          <!-- <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top" href="signin-illustration.html"><i class="ai-log-out fs-lg opacity-60 me-2"></i>ログアウト</a> -->
+        </div>
+      </div>
+      <!-- Page content-->
+      
+      <div class="container position-relative zindex-5 pt-6 py-md-6 mb-md-3 home--height">
+        <div class="row">
+          <div class="col-md-3 d-none d-md-block">
+            <div class="bg-light rounded-3 shadow-lg">
+              <div class="px-4 py-4 mb-1 text-center"><img class="d-block rounded-circle mx-auto my-2" src="../../img/main.jpg" at="Amanda Wilson" width="110">
+                <h6 class="mb-0 pt-1">田中　太郎</h6>
+              </div>
+              <div class="d-lg-none px-4 pb-4 text-center"><a class="btn btn-primary px-5 mb-2" href="#account-menu" data-bs-toggle="collapse"><i class="ai-menu me-2"></i>Account menu</a></div>
+              <div class="d-lg-block collapse pb-2" id="account-menu">
+                <h3 class="d-block d-flex align-items-center bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">
+                  アカウント
+                  <span class="text-muted fs-sm fw-normal ms-auto badge bg-dark ">無料会員</span>
+                </h3>
+                <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">
+                  ホーム画面
+                </a>
+                <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">
+                  アカウント情報
+                </a>
+                <h3 class="d-block bg-secondary fs-sm fw-semibold text-muted mb-0 px-4 py-3">その他</h3>
+                <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">基本設定</a>
+                <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">ヘルプ</a>
+                <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">ログアウト</a>
+                <a class="d-flex align-items-center nav-link-style px-4 py-3 border-top mb-0" href="#">退会</a>
+              </div>
+            </div>
+          </div>
+          <!-- Content-->
+          <div class="col-12 col-md-9">
+            <div class="d-flex flex-column pb-4 pb-md-0  rounded-3 ">
+                <div class="position-relative">
+                  <div class="mb-0 mb-md-2 position-relative border-bottom pb-2">
+                    <a href="#" class="btn btn-secondary btn--back">
+                      <i class="ai-arrow-left"></i>
+                    </a>
+                    <div class="text-end">
+                      <!-- <button type="button" class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#create" data-bs-dismiss="modal">再申請  申請取消
+                      </button> -->
+                      <button type="button" class="btn btn-secondary"  data-bs-toggle="modal" data-bs-target="#selection" data-bs-dismiss="modal">対応する</button>
+                      <button type="button" class="btn btn-primary">対応待</button>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="mb-3">
+                    <label class="fs-sm fw-bold">■タイトル</label>
+                    <p class="mb-0">○○○○の経費申請</p>
+                  </div>    
+                  <div class="mb-3">
+                    <label class="fs-sm fw-bold">■申請者</label>
+                    <p class="mb-0">田中 太郎</p>
+                  </div>   
+                  <div class="mb-3">
+                    <label class="fs-sm fw-bold">■申請日時</label>
+                    <p class="mb-0">2021-09-17 12:45</p>
+                  </div>  
+                  <div class="mb-3">
+                    <label class="fs-sm fw-bold">■説明</label>
+                    <p class="mb-0">テキストテキストテキストテキスト
+                      テキストテキストテキストテキスト</p>
+                  </div>  
+                  <div class="mb-3">
+                    <label class="fs-sm fw-bold">■優先度</label>
+                    <p class="mb-0">中</p>
+                  </div>
+                  <div class="mb-3">
+                    <label class="fs-sm fw-bold">■添付ファイル</label>
+                    <ul class="ps-0" style="list-style: none;">
+                      <li><a href="#">https://##########</a></li>
+                      <li><a href="#">https://##########</a></li>
+                      <li><a href="#">https://##########</a></li>
+                    </ul>
+                  </div>  
+                  <div class="mb-3 ">
+                    <label class="fs-sm fw-bold">■指定承認者</label>
+                    <ol class="ps-0 border-1 list--approver list-group">
+                      <li class="list-group-item d-flex align-items-center justify-content-between bg-light ps-4 ps-md-5">
+                        <span>田中 一朗</span>
+                        <div>
+                          <div class="text--circle me-2">
+                            <span>田中</span>
+                          </div>
+                          
+                          <i class="ai-message-square me-2"></i>
+                          <button type="button" class="btn btn-link p-0">承認</button>
+                        </div> 
+                      </li>
+                      <li class="list-group-item d-flex align-items-center justify-content-between bg-light ps-4 ps-md-5">
+                        <span>田中 一朗</span>
+                        <div>
+                          <div class="text--circle me-2">
+                            <span>田中</span>
+                          </div>
+                          
+                          <i class="ai-message-square me-2"></i>
+                          <button type="button" class="btn btn-link p-0">承認</button>
+                        </div> 
+                      </li>
+                    </ol>
+                  </div>  
+                </div>
+                
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </main>
+    <footer class="footer py-4 pb-5 pb-md-4">
+        <div class="container  d-md-flex align-items-center justify-content-between py-2">
+          <ul class="list-inline fs-sm mb-3 mb-md-0 order-md-2">
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">運営会社</a></li>
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">利用規約</a></li>
+            <li class="list-inline-item my-1"><a class="nav-link-style" href="#">プライバシーポリシー</a></li>
+          </ul>
+          <p class="fs-sm mb-0 me-3 order-md-1"><span class="text-muted me-1">Copyright © HERO, Inc. All Rights Reserved.</span></p>
+        </div>
+      </footer>
+      <div class="btn-toolbar sidebar-toggle btn-toolbar--custom menu__bar" role="toolbar" aria-label="Settings toolbar">
+        <div class="btn-group me-2 mb-2" role="group" aria-label="Settings group">
+          <button type="button" class="btn btn-secondary btn-icon">
+            <i class="ai-message-square"></i>
+          </button>
+          <button type="button" class="btn btn-secondary btn-icon">
+            <i class="ai-calendar"></i>
+          </button>
+          <button type="button" class="btn btn-secondary btn-icon">
+            <i class="ai-list"></i>
+          </button>
+        </div>
+      </div>
+      <!-- <button class="btn btn-primary btn-sm sidebar-toggle" type="button"><i class="ai-sidebar fs-base me-2"></i>Sidebar</button> -->
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="../../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="../../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <!-- Main theme script-->
+    <script src="../../js/theme.min.js"></script>
+    <script>
+      let approver = document.querySelector("#add-approver");
+      let list = document.querySelector("#list-approver");
+      approver.addEventListener('click', function() {
+        var itemsByTagName = document.getElementsByTagName("ol");
+        list.innerHTML += '<li><div class="input-group"><input class="form-control text-center" type="text"><button class="btn btn-link border btn-icon" type="button"><i class="ai-x"></i></button></div></li>';
+      });
+    </script>
+  </body>
+</html>
